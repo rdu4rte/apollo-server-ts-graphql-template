@@ -1,0 +1,13 @@
+# node_modules
+node_modules
+
+# etc
+.husky
+.vscode
+
+# jest
+coverage
+test
+
+# prod
+dist
