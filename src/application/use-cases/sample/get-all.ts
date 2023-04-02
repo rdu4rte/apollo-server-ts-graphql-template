@@ -1,8 +1,13 @@
-import { PaginationParams, QueryParams, Sample, SampleData } from '@/application/dtos'
+import {
+  type PaginationParams,
+  type QueryParams,
+  type Sample,
+  type SampleData
+} from '@/application/dtos'
 import { QueryHelper } from '@/application/helpers'
-import { IUseCase } from '@/domain/use-cases'
+import { type IUseCase } from '@/domain/use-cases'
 import { SampleRepository } from '@/infra/db/repositories'
-import { Db, ObjectID, ObjectId } from 'mongodb'
+import { type Db, ObjectID, ObjectId } from 'mongodb'
 import { Inject, Service } from 'typedi'
 
 @Service()
@@ -19,9 +24,9 @@ export class GetSamples implements IUseCase {
     const query: any = {}
 
     if (search) {
-      if (ObjectID.isValid(search)) query['_id'] = new ObjectId(search)
+      if (ObjectID.isValid(search)) query._id = new ObjectId(search)
       else {
-        query['$or'] = [
+        query.$or = [
           { field_1: { $regex: `.*${search}`, $options: 'i' } },
           { field_2: { $regex: `.*${search}`, $options: 'i' } },
           { field_3: { $regex: `.*${search}`, $options: 'i' } }

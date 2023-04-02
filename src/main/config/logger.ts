@@ -1,4 +1,4 @@
-import { ILogger } from '@/domain/config'
+import { type ILogger } from '@/domain/config'
 import { Service } from 'typedi'
 import winston from 'winston'
 

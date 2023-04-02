@@ -1,5 +1,5 @@
 import { Service } from 'typedi'
-import { JwtCredentials } from '@/application/dtos/auth'
+import { type JwtCredentials } from '@/application/dtos/auth'
 import * as jwt from 'jsonwebtoken'
 import { config } from '@/main/config'
 

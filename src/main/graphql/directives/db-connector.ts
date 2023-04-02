@@ -2,8 +2,8 @@ import { ServerError } from '@/application/errors'
 import { MongoConnector } from '@/infra/db/connectors'
 import { config } from '@/main/config'
 import { SchemaDirectiveVisitor } from '@graphql-tools/utils'
-import { defaultFieldResolver, GraphQLField } from 'graphql'
-import { Db } from 'mongodb'
+import { defaultFieldResolver, type GraphQLField } from 'graphql'
+import { type Db } from 'mongodb'
 
 export class DbConnectorDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field: GraphQLField<any, any>): void {

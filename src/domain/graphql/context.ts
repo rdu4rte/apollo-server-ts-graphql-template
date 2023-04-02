@@ -1,4 +1,4 @@
-import { Db } from 'mongodb'
+import { type Db } from 'mongodb'
 
 export interface HttpCtx {
   req: Request

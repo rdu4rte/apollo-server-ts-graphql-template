@@ -5,6 +5,7 @@
 
 type Query {
   samples(pagination: PaginationParams!): SampleData!
+  sampleById(sample_id: String!): Sample!
 }
 
 type SampleData {
@@ -17,10 +18,17 @@ type Sample {
   field_1: String!
   field_2: Int!
   field_3: Boolean!
+  created_at: DateTime!
+  updated_at: DateTime!
 }
 
 """MongoDB ObjectId scalar type"""
 scalar ObjectId
+
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
 
 input PaginationParams {
   page: Int
@@ -38,6 +46,8 @@ enum SortDirection {
 
 type Mutation {
   deleteSample(sample_id: String!): DefaultResponse!
+  insertSample(input: SampleInput!): Sample!
+  updateSample(input: SampleInput!, sample_id: String!): Sample!
 }
 
 type DefaultResponse {
@@ -50,4 +60,10 @@ enum ResStatus {
   success
   failed
   working
+}
+
+input SampleInput {
+  field_1: String!
+  field_2: Int!
+  field_3: Boolean!
 }

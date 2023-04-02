@@ -1,4 +1,4 @@
-import { GraphQLSchema } from 'graphql'
+import { type GraphQLSchema } from 'graphql'
 import { ObjectId } from 'mongodb'
 import { buildSchema } from 'type-graphql'
 import Container from 'typedi'

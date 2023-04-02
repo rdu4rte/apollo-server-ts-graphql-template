@@ -2,8 +2,8 @@
 import * as glob from 'glob'
 import path from 'path'
 
-const resolverFiles = glob
-  .sync(path.join(__dirname, './*-resolver.ts'))
-  .map((resolver) => require(resolver).default)
+type ResolverFn = (...args: any[]) => any
 
-export const resolvers = resolverFiles as [Function, ...Function[]]
+export const resolvers = glob
+  .sync(path.join(__dirname, './*-resolver.ts'))
+  .map<ResolverFn>((resolver) => require(resolver).default)

@@ -1,4 +1,4 @@
-import { PaginationParams, QueryParams } from '@/application/dtos/global'
+import { type PaginationParams, type QueryParams } from '@/application/dtos/global'
 import { Service } from 'typedi'
 
 @Service()

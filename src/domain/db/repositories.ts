@@ -1,4 +1,4 @@
-import { Db } from 'mongodb'
+import { type Db } from 'mongodb'
 
 export interface IDefaultRepository {
   getAll: <T>(queryParams: object, query: object, dbConn: Db, collection?: string) => Promise<T[]>

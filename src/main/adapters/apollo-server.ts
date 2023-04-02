@@ -1,10 +1,10 @@
-import { Server, createServer } from 'http'
+import { type Server, createServer } from 'http'
 import { gqlBuildSchema } from '../graphql'
 import express from 'express'
 import { ApolloServer } from '@apollo/server'
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
 import { expressMiddleware } from '@apollo/server/express4'
-import cors, { CorsRequest } from 'cors'
+import cors, { type CorsRequest } from 'cors'
 import { json } from 'body-parser'
 import { WebSocketServer } from 'ws'
 import { useServer } from 'graphql-ws/lib/use/ws'
@@ -23,7 +23,7 @@ export default async (): Promise<Server> => {
         async serverWillStart() {
           return {
             async drainServer() {
-              await serverCleanup
+              await serverCleanup.dispose()
             }
           }
         }

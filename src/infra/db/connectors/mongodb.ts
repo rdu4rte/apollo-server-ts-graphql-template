@@ -1,4 +1,4 @@
-import { MongoClient, Db } from 'mongodb'
+import { MongoClient, type Db } from 'mongodb'
 
 export const MongoConnector = {
   client: null as unknown as MongoClient,

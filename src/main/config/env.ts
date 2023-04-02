@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv'
 import { LoggerService } from './logger'
-import { EnvConfig } from '@/domain/config'
+import { type EnvConfig } from '@/domain/config'
 
 dotenv.config()
 
