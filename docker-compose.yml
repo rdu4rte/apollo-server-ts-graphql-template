@@ -6,7 +6,7 @@ services:
     hostname: 'app-${PROJECT_NAME}'
     container_name: 'app-${PROJECT_NAME}'
     build:
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile.dev
       context: .
     networks:
       - local_dev_network

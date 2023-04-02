@@ -4,5 +4,50 @@
 # -----------------------------------------------
 
 type Query {
-  test: Boolean!
+  samples(pagination: PaginationParams!): SampleData!
+}
+
+type SampleData {
+  data: [Sample!]!
+  count: Int!
+}
+
+type Sample {
+  _id: ObjectId
+  field_1: String!
+  field_2: Int!
+  field_3: Boolean!
+}
+
+"""MongoDB ObjectId scalar type"""
+scalar ObjectId
+
+input PaginationParams {
+  page: Int
+  pageSize: Int
+  sort: [String!]
+  sortDirection: SortDirection
+  search: String
+}
+
+"""Sort direction type definition"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+type Mutation {
+  deleteSample(sample_id: String!): DefaultResponse!
+}
+
+type DefaultResponse {
+  status: ResStatus!
+  res: String
+}
+
+"""Response status type definition"""
+enum ResStatus {
+  success
+  failed
+  working
 }

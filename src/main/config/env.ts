@@ -23,5 +23,10 @@ export const config: EnvConfig = {
     user: env('DB_USERNAME') || 'test',
     password: env('DB_PASSWORD') || 'test',
     database: env('DB_DATABASE') || 'apollo_gql_db'
+  },
+  jwt: {
+    secret: env('JWT_SECRET') || 's3cr3t',
+    sessionTtl: env('JWT_SESSION_TTL') || 43200,
+    salt: +env('JWT_ENCRYPTION_SALT') || 12
   }
 }

@@ -9,4 +9,9 @@ export interface EnvConfig {
     password: string
     database: string
   }
+  jwt: {
+    secret: string
+    sessionTtl: number
+    salt: number
+  }
 }

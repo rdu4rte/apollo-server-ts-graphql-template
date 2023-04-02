@@ -6,6 +6,8 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import { expressMiddleware } from '@apollo/server/express4'
 import cors, { CorsRequest } from 'cors'
 import { json } from 'body-parser'
+import { WebSocketServer } from 'ws'
+import { useServer } from 'graphql-ws/lib/use/ws'
 
 export default async (): Promise<Server> => {
   const schema = await gqlBuildSchema()
@@ -15,8 +17,26 @@ export default async (): Promise<Server> => {
 
   const apolloServer = new ApolloServer({
     schema,
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
+    plugins: [
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+      {
+        async serverWillStart() {
+          return {
+            async drainServer() {
+              await serverCleanup
+            }
+          }
+        }
+      }
+    ]
   })
+
+  const wsServer = new WebSocketServer({
+    server: httpServer,
+    path: '/graphql'
+  })
+
+  const serverCleanup = useServer({ schema }, wsServer)
 
   await apolloServer.start()
 
