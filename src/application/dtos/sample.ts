@@ -26,6 +26,9 @@ export class Sample {
 
   @Field(() => Date)
   updated_at: Date
+
+  @Field(() => String, { nullable: true })
+  field_res_ex: string
 }
 
 @ObjectType()

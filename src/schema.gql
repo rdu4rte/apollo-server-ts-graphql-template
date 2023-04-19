@@ -20,6 +20,7 @@ type Sample {
   field_3: Boolean!
   created_at: DateTime!
   updated_at: DateTime!
+  field_res_ex: String
 }
 
 """MongoDB ObjectId scalar type"""
@@ -66,4 +67,8 @@ input SampleInput {
   field_1: String!
   field_2: Int!
   field_3: Boolean!
+}
+
+type Subscription {
+  insertedSample: Sample
 }
